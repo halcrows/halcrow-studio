@@ -35,6 +35,10 @@
 /* =========================================================
    PART 1: MOBILE-FIRST
    ========================================================= */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Roboto, Arial, sans-serif;
   background-color: #050505; 
@@ -407,7 +411,8 @@ body {
   transition: color 0.3s ease;
 }
 
-.hero-nav a:hover {
+.hero-nav a:hover,
+.hero-nav a:focus {
   color: #fff;
 }
 
@@ -505,7 +510,8 @@ body {
   transition: color 0.3s ease;
 }
 
-.social-icons a:hover {
+.social-icons a:hover,
+.social-icons a:focus {
   color: #fff;
 }
 
@@ -555,7 +561,8 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.subscribe-form button:hover {
+.subscribe-form button:hover,
+.subscribe-form button:focus {
   background-color: #fff;
 }
 
