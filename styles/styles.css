@@ -1,0 +1,574 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Part 0: Universal Reset
+# Part 0.5: Utilities (Accessibility)
+# Part 1: Mobile-First
+# Part 2: Desktop
+# Part 3: The Illusion
+# Part 4: Hero Header
+# Part 5: Footer
+--------------------------------------------------------------*/
+
+/* =========================================================
+   PART 0.5: UTILITIES (ACCESSIBILITY)
+   -Normalize
+   ========================================================= */
+/* 
+  Screen Reader Only Utility
+  The A11Y Project: https://www.a11yproject.com/posts/how-to-hide-content/
+  CSS-Tricks: https://css-tricks.com/inclusively-hidden/
+  Note: Visually hides an element while still allowing screen readers to announce it. 
+  Used in this project for: Hidden form labels (Subscribe form).
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+/* =========================================================
+   PART 1: MOBILE-FIRST
+   ========================================================= */
+body {
+  font-family: Roboto, Arial, sans-serif;
+  background-color: #050505; 
+  color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 1rem 2rem; 
+}
+
+.flex-gallery {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;         
+  justify-content: center; 
+  align-items: stretch; /* Allows columns to stretch to the row's full height */   
+  gap: 1.5rem; 
+  width: 100%;
+  max-width: 120rem;
+}
+
+/* Ensure the Tall cards dictate the row height without being distorted by stretch */
+.flex-row:nth-of-type(2) .card-tall 
+{ align-self: flex-end; }
+.flex-row:not(:nth-of-type(2)) .card-tall 
+{ align-self: flex-start; }
+
+/* The Main Container */
+.card-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  cursor: pointer;
+  /* Default mobile behavior: stretch to fill the mobile screen */
+  flex-grow: 1; 
+  flex-shrink: 1; 
+  flex-basis: 100%; 
+  max-width: 450px; /* Prevents cards from becoming massively huge on horizontal tablets */
+}
+
+/* Proportional Scaling of the Cards */
+/* CSS aspect-ratio: https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio */
+/* Forces the height of an element to automatically recalculate based on its width, keeping the cards proportional as they scale. */
+.card-tall   { aspect-ratio: 300 / 420; }
+.card-square { aspect-ratio: 1 / 1; }
+.card-wide   { aspect-ratio: 480 / 320; }
+
+/* Make the Hero Card taller on mobile so the header has room to breathe */
+.flex-row:first-of-type .card-wide {
+  aspect-ratio: 1 / 1;
+  align-items: flex-end;
+  padding-bottom: 2rem;
+}
+
+/* Column Wrappers for Filler Cards */
+.card-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 450px;
+}
+
+.card-column .card-container {
+  flex-grow: 0; /* Prevents column height from interfering with aspect-ratio */
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: 100%;
+}
+
+.filler-card {
+  /* 
+    Flex-Grow
+    MDN Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
+    CSS-Tricks Guide: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    Note: Automatically calculates and fills the exact empty vertical gap left in the column.
+  */
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  background-color: #050505;
+  border: 1px solid #646566;
+  border-radius: 8px;
+  min-height: 50px; /* Keeps a slim grid bar visible on mobile */
+  width: 100%;
+  max-width: 450px;
+}
+
+/* Mobile Reordering for Footer Cards */
+/* Note: 49.9375em equals 799px (1px less than 50em). Prevents overlap bugs while using accessible em units. */
+@media (max-width: 49.9375em) {
+  .filler-card:empty {
+    display: none; /* Hides decorative empty cards on mobile screens */
+  }
+
+  .flex-row:last-of-type .card-column {
+    /* 
+      Display: Contents
+      MDN Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/display
+      CSS-Tricks: https://css-tricks.com/get-ready-for-display-contents/
+      Note: "Unwraps" the column container so its children can participate directly in the parent flex row's ordering.
+    */
+    display: contents; 
+  }
+  .flex-row:last-of-type .col-wide .card-container {
+    order: 1; /* Ensures Concept 03 stays above the footers */
+  }
+  .flex-row:last-of-type .col-square .filler-card {
+    order: 2; /* Pushes the Social footer down */
+  }
+  .flex-row:last-of-type .col-wide .filler-card {
+    order: 3; /* Pushes the Subscribe footer to the absolute bottom */
+  }
+}
+
+/* Fluid Image Wrappers (Using percentages so they grow/shrink with the parent card) */
+.image-wrapper { position: relative; z-index: 3; width: 65%; aspect-ratio: 1 / 1; }
+.wrap-square   { width: 65%; aspect-ratio: 1 / 1; }
+.wrap-wide     { width: 75%; aspect-ratio: 340 / 220; }
+
+/* =========================================================
+   PART 2: DESKTOP
+   ========================================================= */
+@media (min-width: 50em) {
+  body {
+    padding: 3rem 2rem;
+  }
+  
+  .card-container, .card-column, .filler-card {
+    max-width: none; /* Release the mobile tablet constraint */
+    width: auto; /* Release the 100% mobile width so they can share the row */
+  }
+
+  /* 
+    Flex Sizing Properties
+    MDN Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/flex
+    CSS-Tricks Guide: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    Note: Sets the "ideal" base width (flex-basis) and tells the cards to mathematically stretch (flex-grow) to fill the exact edges of the row.
+  */
+  .card-tall { 
+    flex-grow: 1; 
+    flex-shrink: 1; 
+    flex-basis: 300px; 
+  }
+  .col-square { 
+    flex-grow: 1; 
+    flex-shrink: 1; 
+    flex-basis: 360px; 
+  }
+  .col-wide { 
+    flex-grow: 1; 
+    flex-shrink: 1; 
+    flex-basis: 480px; 
+  }
+
+  /* Reset Hero Card to its cinematic wide ratio on desktop */
+  .flex-row:first-of-type .card-wide {
+    aspect-ratio: 480 / 320;
+    align-items: center;
+    padding-bottom: 0;
+  }
+
+  /* Ensure the top proverb fits on one single line */
+  .flex-row:nth-of-type(2) .col-square .footer-text {
+    padding: 0.5rem; /* Reduce side padding to give the text more room */
+  }
+}
+
+/* =========================================================
+   PART 3 THE ILLUSION
+   ========================================================= */
+
+/* The 2D Card to 3D Shelf Illusion */
+.the-box {
+  /* Positioning mechanics: https://developer.mozilla.org/en-US/docs/Web/CSS/position */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #050505; 
+  border: 1px solid #646566;
+  border-radius: 8px;
+  
+  /* The Hinge (2D card falls down to become the shelf-like 3D surface) */
+  /* Hinge anchor-point: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin */
+  transform-origin: bottom center;
+
+  /* Transition physics: https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease, background-color 0.6s ease;
+
+  /* Stacking context: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index */
+  z-index: 1;
+}
+
+/* The Drafting Grid Pattern */
+/* 
+  Pattern adapted from: https://projects.verou.me/css3patterns/#blueprint-grid
+  Note: Background initially inspired by Shaw Lukas' "blocks": https://blocks.shawnlukas.com/
+  Hard-stop logic: https://css-tricks.com/books/greatest-css-tricks/hard-stop-gradients/
+*/
+.grid-pattern {
+  background-image: 
+    linear-gradient(#ffffff0f 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff0f 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center center;
+}
+
+/* On Hover: 2D Card Falling Into 3D Shelf */
+.card-container:hover .the-box,
+.card-container:focus-within .the-box {
+   /* 
+   3D Transformations
+   MDN Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/perspective
+   Note: To find the ideal shelf angle, I started exactly halfway between 45deg and 90deg (67.5deg), then experimented further. 
+   */
+  transform: perspective(1000px) rotateX(70deg); 
+
+  background-color: #161616; 
+  border-color: #646566;
+
+  box-shadow: 0px 50px 40px #030303f2; 
+}
+
+/* Hover Text */
+.card-text {
+  /* Positioning: https://developer.mozilla.org/en-US/docs/Web/CSS/position */
+  position: absolute;
+  /* Moved inside to the top of the Card */
+  top: 30px; 
+  width: 100%;
+  text-align: center;
+
+  /* Stacking order: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index */
+  z-index: 4; /* Keeps it floating above everything else */
+
+  /* Transparency: https://developer.mozilla.org/en-US/docs/Web/CSS/opacity */
+  opacity: 0; /* Hidden by default */
+
+  /* Smooth transition timing: https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+
+  /* Y-axis movement: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateY */
+  transform: translateY(-10px); /* Starts slightly lifted */
+}
+
+/* Fades in and drops down smoothly when the 3D shelf effect triggers */
+/* Hover state: https://developer.mozilla.org/en-US/docs/Web/CSS/:hover */
+.card-container:hover .card-text,
+.card-container:focus-within .card-text {
+  opacity: 1; 
+  transform: translateY(0px); /* Drops down into its final resting position */
+}
+
+.card-text h2 {
+  margin: 0 0 4px 0;
+  font-weight: 500;
+  font-size: 1.125rem;
+  letter-spacing: 2px;
+}
+
+.card-text p {
+  margin: 0;
+  color: #eaeaea;
+  font-size: 1rem;
+}
+
+/* Product Images & Sizes */
+.product-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* Forces images to fit the wrapper without distorting aspect ratio: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit */
+  object-fit: contain;
+
+  /* Transition physics: https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+  /* Easing mechanics: https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function */
+  /* Note: Custom cubic-bezier adds a realistic sense of physics (fast start, soft landing). */
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Initial States */
+.img-2d { 
+  /* Transparency logic: https://developer.mozilla.org/en-US/docs/Web/CSS/opacity */
+  opacity: 1; 
+  /* Transform mechanics: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale */
+  transform: scale(1); 
+}
+
+.img-3d { 
+  opacity: 0; 
+  /* Starts slightly lifted (translateY) and scaled, waiting for hover state */
+  /* Translation mechanics: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate */
+  transform: translateY(20px) scale(0.9);
+} 
+
+/* On Hover: Image Swap and Shelf Position */
+/* Hover pseudo-class: https://developer.mozilla.org/en-US/docs/Web/CSS/:hover */
+.card-container:hover .img-2d,
+.card-container:focus-within .img-2d { 
+  opacity: 0; /* Fades out the flat 2D drawing */
+  transform: scale(0.9); /* Shrinks slightly as it disappears backward */
+}
+
+.card-container:hover .img-3d,
+.card-container:focus-within .img-3d { 
+  opacity: 1; /* Fades in the 3D model */
+  /* 3D model drops slightly downward on hover so it looks like it rests on the shelf */
+  transform: translateY(25px) scale(1.15); 
+}
+
+/* Pushes the Tall 3D object further forward on the shelf */
+.card-tall:hover .img-3d,
+.card-tall:focus-within .img-3d {
+  transform: translateY(1rem);
+  z-index: 10; 
+}
+
+/* =========================================================
+   PART 4: HERO HEADER
+   ========================================================= */
+.hero-header {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.hero-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #f1f1f1;
+}
+
+.hero-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-nav a {
+  color: #eaeaea;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.hero-nav a:hover {
+  color: #fff;
+}
+
+/* Hide the hero text on mobile by default */
+.flex-row:first-of-type .card-text {
+  display: none;
+}
+
+@media (min-width: 50em) {
+  .hero-nav ul {
+    gap: 2rem;
+  }
+
+  /* Specific styles for the Hero Card's hover text (Desktop Only) */
+  .flex-row:first-of-type .card-text {
+    display: block; /* Show the text on desktop */
+    top: auto; /* Remove the default top positioning */
+    bottom: 65%; /* Position it from the bottom, closer to the image */
+  }
+
+  .flex-row:first-of-type .card-text h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  .flex-row:first-of-type .card-text p {
+    font-size: 1.25rem;
+  }
+}
+
+/* =========================================================
+   PART 5: FOOTER
+   ========================================================= */
+.footer-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+/* Proverb Formatting */
+.proverb {
+  margin: 0;
+  padding: 0;
+}
+
+.proverb blockquote p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #f1f1f1;
+}
+
+.proverb figcaption {
+  text-align: right;
+  font-size: 1rem;
+  color: #c8c8c8;
+  letter-spacing: 1px;
+  margin-top: 6px;
+}
+
+.footer-text p {
+  margin: 0;
+  color: #eaeaea;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.footer-text .copyright {
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+  color: #aaa;
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icons a {
+  color: #eaeaea;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 1.125rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+.subscribe-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column; /* Stack vertically on small mobile screens */
+  gap: 0.5rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Snap back to side-by-side once there is enough horizontal room */
+@media (min-width: 30em) {
+  .subscribe-form {
+    flex-direction: row;
+  }
+}
+
+.subscribe-form input {
+  flex-grow: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #646566;
+  background-color: #050505;
+  color: #f1f1f1;
+  font-family: inherit;
+  font-size: 1.125rem;
+}
+
+.subscribe-form input:focus {
+  outline: 1px solid #eaeaea;
+}
+
+.subscribe-form button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #eaeaea;
+  color: #050505;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-size: 1.125rem;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-form button:hover {
+  background-color: #fff;
+}
+
+/* Disable 3D effect for static cards */
+.static-card:hover .the-box,
+.static-card:focus-within .the-box {
+  transform: none;
+  background-color: #050505;
+  box-shadow: none;
+}
+
+/* Dim the image on static cards so the hover text is readable */
+.static-card:hover .product-img,
+.static-card:focus-within .product-img {
+  opacity: 0.15;
+}

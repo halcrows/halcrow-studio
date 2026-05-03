@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 1000 800">
+  <defs>
+    <style>
+      .st3,.st4,.st5,.st7{fill:none}.st3,.st4,.st7{stroke:#ededed}.st5{stroke-linecap:round}.st3{stroke-dasharray:4 8}.st3,.st7{stroke-width:5px}.st4,.st5{stroke-width:6px;stroke-linejoin:round}.st5{stroke:#ccc;stroke-width:7px}
+    </style>
+  </defs>
+  <path d="M0 153h1000" class="st3"/>
+  <path d="M0 353h1000M0 553h1000M0 753h1000M150 3v800M350 3v800" class="st7"/>
+  <path d="M500 3v800" class="st3"/>
+  <path d="M750 3v800" class="st7"/>
+  <path d="M360 3c10 50 30 100 60 160s80 110 120 150 80 60 120 100 100 50 140 40c50-10 120-30 200-20" class="st4"/>
+  <path d="M400 3q15 60 60 150c45 90 80 110 120 150s80 50 120 90 90 40 140 20 110-30 160-10" class="st4"/>
+  <path d="M440 3c10 30 30 80 60 140s80 110 120 150 80 40 120 80 80 30 140 0q75-45 120 0" class="st4"/>
+  <path fill="none" stroke="#ededed" stroke-dasharray="10 12" stroke-width="8" d="M0 153h370m-220 0v650m600-330-70 130v200"/>
+  <path fill="none" stroke="#999" stroke-linecap="round" stroke-width="1.5" d="M173.09 224.51c80-10 120 60 240 20 20-10 30-30 40-25M100 483c100-30 200 40 300-60 40-40 70-40 100-70M277.43 796.68c50-150 150-180 250-300 50-50 80-40 110-30M400 803c40-100 120-160 200-250 30-40 50-50 80-65"/>
+  <path fill="none" stroke="#f1f1f1" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M320 3c10 50-10 100 30 150 30 50 70 100 100 130 20 20 30 60 50 70 30 15 70 30 100 70s50 50 40 65c10-5 30 5 50-5 50 15 110-10 160 0s100 50 150 40"/>
+  <circle cx="500" cy="353" r="14" fill="none" stroke="#f1f1f1" stroke-dasharray="4 4" stroke-width="1.5"/>
+  <path fill="none" stroke="#f1f1f1" stroke-width="1.5" d="M480 353h40m-20-20v40"/>
+  <circle cx="500" cy="353" r="3" fill="#f1f1f1" stroke="#f1f1f1"/>
+  <g opacity=".4">
+    <path d="M324.84.06c9.74 50.05-10.52 99.95 29.21 150.16 29.74 50.16 69.48 100.37 99.32 130.52 19.9 20.1 29.69 60.16 49.63 70.26 29.92 15.16 69.84 30.37 99.63 70.52 29.79 40.16 49.74 50.26 39.66 65.21 10.03-4.95 29.97 5.16 50.03-4.74 49.92 15.26 110.05-9.42 160 .84s99.74 50.52 149.79 40.78" class="st5"/>
+    <path d="M171.27 223.62c80.05-9.58 119.68 60.63 239.89 21.26 20.05-9.9 30.16-29.84 40.13-24.79M102.32 478.9c100.16-29.48 199.79 41.05 300.31-58.43 40.21-39.79 70.21-39.63 100.37-69.48M273.82 793.08c50.78-149.74 150.94-179.21 251.57-298.69 50.26-49.74 80.21-39.58 110.16-29.42m-234.9 335.5c40.52-99.79 120.84-159.37 201.31-248.95 30.21-39.84 50.26-49.74 80.34-64.58" class="st5"/>
+    <circle cx="503" cy="351" r="16" class="st5"/>
+  </g>
+</svg>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FWDP-1000-P01-Landing-Page-Craig</title>
+
+  <link rel="stylesheet" href="styles/normalize-fwd.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+  <!-- Wraps the entire page content -->
+  <main class="flex-gallery">
+
+    <!--
+    --------------------------------------------------------------
+    >>> TABLE OF CONTENTS:
+    ----------------------------------------------------------------
+    # Row 0: Hero Header
+    # Row 1: Concepts (Tall, Square, Wide)
+    # Row 2: Concepts (Wide, Tall, Square)
+    # Row 3: Concepts (Tall, Square, Wide) & Footers
+    --------------------------------------------------------------
+    -->
+
+    <!-- ==========================================
+         ROW 0: HERO HEADER
+    =========================================== -->
+    <section class="flex-row">
+      
+      <!-- Hero Card (Wide) -->
+      <article class="card-container card-wide">
+        <div class="the-box grid-pattern"></div>
+        
+        <!-- Header & Nav Overlay -->
+        <header class="hero-header">
+          <h1>Halcrow</h1>
+          <nav class="hero-nav">
+            <ul>
+              <li><a href="index.html">Studio</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <div class="card-text">
+          <h2>bauxd air</h2>
+          <p>The box and the air inside it.</p>
+        </div>
+
+        <div class="image-wrapper wrap-wide">
+          <img src="images/concept03-wide-2d.svg" class="product-img img-2d" alt="Wide Concept 2D Draft">
+          <!-- aria-hidden="true": Hides decorative 3D image from screen readers to prevent redundant announcements. -->
+          <img src="images/concept03-wide-3d.svg" class="product-img img-3d" alt="Wide Concept 3D Render" aria-hidden="true">
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ==========================================
+         ROW 1: CONCEPTS (Tall, Square, Wide)
+    =========================================== -->
+    <section class="flex-row">
+      
+      <!-- Concept 1 (Tall) -->
+      <!-- tabindex="0": Makes the article focusable, allowing keyboard users to trigger the :focus-within animation. -->
+      <article class="card-container card-tall" tabindex="0">
+        <div class="the-box grid-pattern"></div>
+        <div class="card-text">
+          <h2>Concept 01</h2>
+          <p>Tall Dimension</p>
+        </div>
+        <div class="image-wrapper">
+          <img src="images/concept01-tall-2d.svg" class="product-img img-2d" alt="Tall Concept 2D Draft">
+          <img src="images/concept01-tall-3d.svg" class="product-img img-3d" alt="Tall Concept 3D Render" aria-hidden="true">
+        </div>
+      </article>
+
+      <!-- Concept 2 (Square) -->
+      <div class="card-column col-square">
+        <div class="filler-card grid-pattern">
+          <div class="footer-text">
+            <figure class="proverb">
+              <blockquote>
+                <p>"A clever crow will always paint its feather black."</p>
+              </blockquote>
+              <figcaption>Proverb</figcaption>
+            </figure>
+          </div>
+        </div>
+        <article class="card-container card-square" tabindex="0">
+        <div class="the-box grid-pattern"></div>
+        <div class="card-text">
+          <h2>Concept 02</h2>
+          <p>Square Dimension</p>
+        </div>
+        <div class="image-wrapper wrap-square">
+          <img src="images/concept02-square-2d.svg" class="product-img img-2d" alt="Square Concept 2D Draft">
+          <img src="images/concept02-square-3d.svg" class="product-img img-3d" alt="Square Concept 3D Render" aria-hidden="true">
+        </div>
+      </article>
+      </div>
+
+      <!-- Concept 3 (Wide) -->
+      <div class="card-column col-wide">
+        <div class="filler-card grid-pattern"></div>
+        <article class="card-container card-wide" tabindex="0">
+        <div class="the-box grid-pattern"></div>
+        <div class="card-text">
+          <h2>Concept 03</h2>
+          <p>Wide Dimension</p>
+        </div>
+        <div class="image-wrapper wrap-wide">
+          <img src="images/concept03-wide-2d.svg" class="product-img img-2d" alt="Wide Concept 2D Draft">
+          <img src="images/concept03-wide-3d.svg" class="product-img img-3d" alt="Wide Concept 3D Render" aria-hidden="true">
+        </div>
+      </article>
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         ROW 2: CONCEPTS (Wide, Tall, Square)
+    =========================================== -->
+    <section class="flex-row">
+      
+      <!-- Concept 3 (Wide) -->
+      <div class="card-column col-wide">
+        <article class="card-container card-wide static-card">
+        <div class="the-box grid-pattern"></div>
+        <div class="card-text">
+          <h2>Country Project</h2>
+          <p>Where am I?</p>
+        </div>
+        <div class="image-wrapper wrap-wide">
+          <a href="#"><img src="images/country-project-hint.svg" class="product-img" alt="Country Project Map Hint"></a>
+        </div>
+      </article>
+        <div class="filler-card grid-pattern"></div>
+      </div>
+
+      <!-- Concept 1 (Tall) -->
+      <article class="card-container card-tall" tabindex="0">
+        <div class="the-box grid-pattern"></div>
+        <div class="card-text">
+          <h2>Concept 01</h2>
+          <p>Tall Dimension</p>
+        </div>
+        <div class="image-wrapper">
+          <img src="images/concept01-tall-2d.svg" class="product-img img-2d" alt="Tall Concept 2D Draft">
+          <img src="images/concept01-tall-3d.svg" class="product-img img-3d" alt="Tall Concept 3D Render" aria-hidden="true">
+        </div>
+      </article>
+
+      <!-- Concept 2 (Square) -->
+      <div class="card-column col-square">
+        <article class="card-container card-square" tabindex="0">
+        <div class="the-box grid-pattern"></div>
+        <div class="card-text">
+          <h2>Concept 02</h2>
+          <p>Square Dimension</p>
+        </div>
+        <div class="image-wrapper wrap-square">
+          <img src="images/concept02-square-2d.svg" class="product-img img-2d" alt="Square Concept 2D Draft">
+          <img src="images/concept02-square-3d.svg" class="product-img img-3d" alt="Square Concept 3D Render" aria-hidden="true">
+        </div>
+      </article>
+        <div class="filler-card grid-pattern"></div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         ROW 3: CONCEPTS & EMBEDDED FOOTERS
+    =========================================== -->
+    <section class="flex-row">
+      
+      <!-- Concept 1 (Tall) -->
+      <article class="card-container card-tall static-card">
+        <div class="the-box grid-pattern"></div>
+        <div class="card-text">
+          <h2>Tic-Tac-Toe</h2>
+          <p>JS Project</p>
+        </div>
+        <div class="image-wrapper">
+          <a href="#"><img src="images/tic-tac-toe.svg" class="product-img" alt="Tic-Tac-Toe Game"></a>
+        </div>
+      </article>
+
+      <!-- Concept 2 (Square) -->
+      <div class="card-column col-square">
+        <article class="card-container card-square" tabindex="0">
+        <div class="the-box grid-pattern"></div>
+        <div class="card-text">
+          <h2>Concept 02</h2>
+          <p>Square Dimension</p>
+        </div>
+        <div class="image-wrapper wrap-square">
+          <img src="images/concept02-square-2d.svg" class="product-img img-2d" alt="Square Concept 2D Draft">
+          <img src="images/concept02-square-3d.svg" class="product-img img-3d" alt="Square Concept 3D Render" aria-hidden="true">
+        </div>
+      </article>
+        <div class="filler-card grid-pattern">
+          <footer class="footer-text">
+            <nav aria-label="Social media">
+              <ul class="social-icons">
+                <li><a href="#">X / Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+              </ul>
+            </nav>
+          </footer>
+        </div>
+      </div>
+
+      <!-- Concept 3 (Wide) -->
+      <div class="card-column col-wide">
+        <article class="card-container card-wide" tabindex="0">
+        <div class="the-box grid-pattern"></div>
+        <div class="card-text">
+          <h2>Concept 03</h2>
+          <p>Wide Dimension</p>
+        </div>
+        <div class="image-wrapper wrap-wide">
+          <img src="images/concept03-wide-2d.svg" class="product-img img-2d" alt="Wide Concept 2D Draft">
+          <img src="images/concept03-wide-3d.svg" class="product-img img-3d" alt="Wide Concept 3D Render" aria-hidden="true">
+        </div>
+      </article>
+        <div class="filler-card grid-pattern">
+          <footer class="footer-text">
+            <figure class="proverb">
+              <blockquote>
+                <p>"Birds of a feather flock together."</p>
+              </blockquote>
+            </figure>
+            <p>Get quarterly product updates from our studio.</p>
+            <form class="subscribe-form" action="#" method="POST">
+              <label for="email-sub" class="sr-only">Email address</label>
+              <input type="email" id="email-sub" name="email" placeholder="Email address" required>
+              <button type="submit">Subscribe</button>
+            </form>
+            <p class="copyright">&copy; 2026 Craig Henderson Halcrow</p>
+          </footer>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Perspective Shelf Morph</title>
+  <style>
+    /* Dark Theme and Flexbox */
+    body {
+      font-family: Roboto, Arial, sans-serif;
+      background-color: #050505; 
+      color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 60px; 
+    }
+
+    .flex-gallery {
+      display: flex;
+      flex-wrap: wrap;         
+      justify-content: center; 
+      gap: 40px; 
+      max-width: 1400px;
+    }
+
+    /* The Main Container */
+    .card-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      cursor: pointer;
+    }
+
+    /* The Three Card Types */
+    .card-tall   { width: 300px; height: 420px; }
+    .card-square { width: 360px; height: 360px; }
+    /* Note: this must transform for mobile! */
+    .card-wide   { width: 480px; height: 320px; }
+
+    /* The 2D Backdrop / 3D Shelf Illusion */
+    .the-box {
+      /* Positioning mechanics: https://developer.mozilla.org/en-US/docs/Web/CSS/position */
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #121212; 
+      border: 1px solid #646566;
+      border-radius: 8px;
+      
+      /* The Hinge (2D backdrop falls down to become the shelf-like 3D surface) */
+      /* Hinge anchor-point: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin */
+      transform-origin: bottom center;
+
+      /* Transition physics: https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease, background-color 0.6s ease;
+
+      /* Stacking context: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index */
+      z-index: 1;
+    }
+
+    /* The Drafting Grid Pattern */
+    /* 
+      Pattern adapted from: https://projects.verou.me/css3patterns/#blueprint-grid
+      Hard-stop logic: https://css-tricks.com/books/greatest-css-tricks/hard-stop-gradients/
+      Gradient syntax: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient
+      Tiling mechanics: https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
+    */
+    .grid-pattern {
+      background-image: 
+        linear-gradient(#ffffff0f 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff0f 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-position: center center;
+    }
+
+    /* On Hover: 2D Backdrop Falling Into 3D Shelf */
+    /* Hover pseudo-class: https://developer.mozilla.org/en-US/docs/Web/CSS/:hover */
+    .card-container:hover .the-box {
+       /* 
+       3D Transformation mechanics:
+       Perspective: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/perspective
+       RotateX: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateX
+       Note: To find the ideal shelf angle, I started exactly halfway between 45deg and 90deg (67.5deg), then experimented further. 
+       */
+      transform: perspective(1000px) rotateX(70deg); 
+
+      background-color: #161616; 
+      border-color: #646566;
+
+      /* Drop shadow for shelf depth: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+      box-shadow: 0px 50px 40px #030303f2; 
+    }
+
+    /* Hover Text */
+    .card-text {
+      /* Positioning: https://developer.mozilla.org/en-US/docs/Web/CSS/position */
+      position: absolute;
+      /* Moved inside to the top of the Card */
+      top: 30px; 
+      width: 100%;
+      text-align: center;
+
+      /* Stacking order: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index */
+      z-index: 4; /* Keeps it floating above everything else */
+
+      /* Transparency: https://developer.mozilla.org/en-US/docs/Web/CSS/opacity */
+      opacity: 0; /* Hidden by default */
+
+      /* Smooth transition timing: https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+      transition: opacity 0.4s ease, transform 0.4s ease;
+
+      /* Y-axis movement: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateY */
+      transform: translateY(-10px); /* Starts slightly lifted */
+    }
+
+    /* Fades in and drops down smoothly when the 3D shelf effect triggers */
+    /* Hover state: https://developer.mozilla.org/en-US/docs/Web/CSS/:hover */
+    .card-container:hover .card-text {
+      opacity: 1; 
+      transform: translateY(0px); /* Drops down into its final resting position */
+    }
+
+    h3 { margin: 0 0 4px 0; font-weight: 500; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; }
+    p { margin: 0; color: #777; font-size: 0.85rem; }
+
+    /* Product Images & Sizes */
+    .image-wrapper {
+      /* Anchor for absolute children: https://developer.mozilla.org/en-US/docs/Web/CSS/position */
+      position: relative;
+      width: 220px;
+      height: 220px;
+      
+      /* Stacking order (keeps images floating above the 3D shelf): https://developer.mozilla.org/en-US/docs/Web/CSS/z-index */
+      z-index: 3; 
+    }
+
+    .wrap-square { width: 240px; height: 240px; }
+    .wrap-wide   { width: 340px; height: 220px; }
+
+    .product-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      /* Forces images to fit the wrapper without distorting aspect ratio: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit */
+      object-fit: contain;
+
+      /* Transition physics: https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+      /* Easing mechanics: https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function */
+      /* Note: I used a custom cubic-bezier(0.2, 0.8, 0.2, 1) timing function. As outlined in MDN's easing docs, this custom curve creates a specific deceleration rate. (It moves quickly at the start and settles softly at the end.) This makes the 3D object feel like it has physics. */
+      transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Initial States */
+    .img-2d { 
+      /* Transparency logic: https://developer.mozilla.org/en-US/docs/Web/CSS/opacity */
+      opacity: 1; 
+      /* Transform mechanics: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale */
+      transform: scale(1); 
+    }
+
+    .img-3d { 
+      opacity: 0; 
+      /* Starts slightly lifted (translateY) and scaled, waiting for hover state */
+      /* Translation mechanics: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate */
+      transform: translateY(20px) scale(0.9); 
+    } 
+
+    /* On Hover: Image Swap and Shelf Position */
+    /* Hover pseudo-class: https://developer.mozilla.org/en-US/docs/Web/CSS/:hover */
+    .card-container:hover .img-2d { 
+      opacity: 0; /* Fades out the flat 2D drawing */
+      transform: scale(0.9); /* Shrinks slightly as it disappears backward */
+    }
+
+    .card-container:hover .img-3d { 
+      opacity: 1; /* Fades in the 3D model */
+      
+      /* 3D model drops slightly downward on hover so it looks like it rests on the shelf */
+      transform: translateY(25px) scale(1.15); 
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="flex-gallery">
+    
+    <!-- The Main Container -->
+    <!-- Added .card-tall to assign specific dimensions -->
+    <div class="card-container card-tall">
+      
+      <!-- The 2D Backdrop / 3D Shelf Illusion -->
+      <!-- Added .grid-pattern to apply the custom blueprint background -->
+      <div class="the-box grid-pattern"></div>
+
+      <!-- Hover Text -->
+      <div class="card-text">
+        <h3>Product 01</h3>
+        <p>Hover to stage</p>
+      </div>
+
+      <!-- Product Images & Sizes -->
+      <div class="image-wrapper">
+        
+        <!-- Initial State: The Flat 2D Drawing -->
+        <svg class="product-img img-2d" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="40" fill="transparent" stroke="#666" stroke-width="2" stroke-dasharray="4 4" />
+        </svg>
+
+        <!-- On Hover: The 3D Model that rests on the Shelf -->
+        <svg class="product-img img-3d" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="40" fill="#ddd" />
+        </svg>
+        
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="a" x1="-88.56" x2="-87.56" y1="469.5" y2="469.5" gradientTransform="matrix(200 0 0 -50 17861 23925)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#888"/>
+      <stop offset=".2" stop-color="#ccc"/>
+      <stop offset=".5" stop-color="#f9f9f9"/>
+      <stop offset=".8" stop-color="#ccc"/>
+      <stop offset="1" stop-color="#888"/>
+    </linearGradient>
+    <linearGradient id="b" x1="-88.56" x2="-87.56" y1="469.5" y2="469.5" gradientTransform="matrix(200 0 0 -300 17861 141150)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#888"/>
+      <stop offset=".2" stop-color="#ccc"/>
+      <stop offset=".5" stop-color="#f9f9f9"/>
+      <stop offset=".8" stop-color="#ccc"/>
+      <stop offset="1" stop-color="#888"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="250" cy="450" fill="url(#a)" rx="100" ry="25"/>
+  <path fill="url(#b)" d="M150 150h200v300H150z"/>
+  <ellipse cx="250" cy="150" fill="#e8e8e8" rx="100" ry="25"/>
+  <ellipse cx="250" cy="150" fill="#ddd" rx="88" ry="20"/>
+</svg>

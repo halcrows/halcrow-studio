@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 500 700">
+  <defs>
+    <style>
+      .st0{stroke:#555}.st0,.st2,.st3,.st5,.st7,.st9{fill:none;stroke-linecap:round;stroke-linejoin:round}.st0,.st3{stroke-width:1px}.st5{stroke-width:1.5px}.st2{stroke-width:2px}.st2,.st5{stroke:#fff}.st3{stroke:#888}.st7{stroke:#f1f1f1;stroke-width:3px}.st9{stroke:#ccc;stroke-width:1.5px}
+    </style>
+  </defs>
+  <path fill="none" stroke="#f2f2f2" stroke-dasharray="4 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M100 150v400m300-400v400M250 75v400m0-250v400"/>
+  <path fill="none" stroke="#afafaf" stroke-dasharray="2 4" stroke-linecap="round" stroke-linejoin="round" d="M200 150v400m100-400v400m-50-425v400m0-350v400"/>
+  <path d="m100 550 150-75 150 75-150 75z" class="st2"/>
+  <path d="m150 525 150 75M200 500l150 75m-150 25 150-75m-200 50 150-75" class="st5"/>
+  <path d="m100 350 150-75 150 75-150 75z" class="st2"/>
+  <path d="m150 325 150 75M200 300l150 75m-150 25 150-75m-200 50 150-75" class="st5"/>
+  <path d="m100 150 150-75 150 75-150 75z" class="st2"/>
+  <path d="m150 125 150 75M200 100l150 75m-150 25 150-75m-200 50 150-75" class="st5"/>
+  <path d="m238 94 24 12m-24 0 24-12" class="st7"/>
+  <ellipse cx="250" cy="150" class="st7" rx="16" ry="8"/>
+  <ellipse cx="150" cy="350" class="st7" rx="16" ry="8"/>
+  <path d="m238 344 24 12m-24 0 24-12m26 25 24 12m-24 0 24-12" class="st7"/>
+  <ellipse cx="200" cy="575" class="st7" rx="16" ry="8"/>
+  <path d="m338 544 24 12m-24 0 24-12" class="st7"/>
+  <g opacity=".4">
+    <path fill="none" stroke="#444" stroke-dasharray="4 6" stroke-linecap="round" stroke-linejoin="round" d="m103.05 146.22-2.1 399.99m302.1-398.42-2.1 399.99M253.44 72l-2.09 400m1.3-250-2.09 400"/>
+    <path fill="none" stroke="#333" stroke-dasharray="2 4" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5" d="m203.05 146.74-2.1 400m102.1-399.48-2.1 400M253.18 122l-2.1 400m1.84-350-2.1 400"/>
+    <path d="M100.95 546.21 251.34 472l149.61 75.78-150.39 74.21z" class="st3"/>
+    <path d="m151.09 521.47 149.61 75.78m-99.48-100.51 149.61 75.78m-150.14 24.21 150.39-74.21m-200.26 48.95 150.39-74.21" class="st0"/>
+    <path d="M102 346.21 252.39 272 402 347.78l-150.39 74.21z" class="st3"/>
+    <path d="m152.13 321.48 149.61 75.78m-99.48-100.52 149.61 75.78m-150.13 24.22 150.39-74.21m-200.26 48.95 150.39-74.21" class="st0"/>
+    <path d="m103.05 146.22 150.39-74.21 149.61 75.78L252.66 222z" class="st3"/>
+    <path d="m153.18 121.48 149.61 75.78M203.31 96.74l149.61 75.78m-150.13 24.22 150.39-74.21m-200.26 48.95 150.39-74.21" class="st0"/>
+    <path d="m241.34 90.94 23.94 12.13m-24-.13 24.06-11.87" class="st9"/>
+    <ellipse cx="253.05" cy="147" class="st9" rx="9" ry="17" transform="rotate(-89.7 253.048 147.005)"/>
+    <ellipse cx="152" cy="346.48" class="st9" rx="9" ry="17" transform="rotate(-89.7 151.999 346.478)"/>
+    <path d="m240.03 340.94 23.94 12.13m-24-.13 24.06-11.87m25.87 25.13 23.94 12.13m-24-.13 24.06-11.87" class="st9"/>
+    <ellipse cx="200.82" cy="571.74" class="st9" rx="9" ry="17" transform="rotate(-89.7 200.82 571.736)"/>
+    <path d="m338.98 541.46 23.94 12.13m-24-.13 24.06-11.87" class="st9"/>
+  </g>
+</svg>

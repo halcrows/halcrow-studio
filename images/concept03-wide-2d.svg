@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440">
+  <path fill="none" stroke="#ededed" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M140 150h400l50 70H90zm-50 70h500v150H90z"/>
+  <g fill="none" stroke-width="1.5" opacity=".5">
+    <path stroke="#ededed" d="m143.62 146.26 399.98 3.49 49.39 70.43-499.98-4.36z"/>
+    <path stroke="#1a1a24" d="m91.701 365.805 1.31-149.994 499.98 4.363-1.309 149.995z"/>
+  </g>
+</svg>
