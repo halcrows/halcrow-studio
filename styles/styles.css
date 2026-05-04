@@ -215,6 +215,11 @@ body {
   .flex-row:nth-of-type(2) .col-square .footer-text {
     padding: 0.5rem; /* Reduce side padding to give the text more room */
   }
+
+  /* Ensure the brand statement fits comfortably within the narrow vertical gap under the wide card */
+  .flex-row:nth-of-type(3) .col-wide .footer-text {
+    padding: 1rem 3rem; 
+  }
 }
 
 /* =========================================================
@@ -473,6 +478,7 @@ body {
   font-size: 1rem;
   letter-spacing: 1px;
   color: #f1f1f1;
+  text-wrap: balance;
 }
 
 .proverb figcaption {
@@ -488,6 +494,14 @@ body {
   color: #eaeaea;
   font-size: 1.125rem;
   line-height: 1.5;
+}
+
+.footer-text .brand-statement {
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #f1f1f1;
+  text-wrap: balance;
 }
 
 .footer-text .copyright {
