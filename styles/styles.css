@@ -44,6 +44,7 @@ body {
   background-color: #050505; 
   color: #f1f1f1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -95,13 +96,6 @@ body {
 .card-tall   { aspect-ratio: 300 / 420; }
 .card-square { aspect-ratio: 1 / 1; }
 .card-wide   { aspect-ratio: 480 / 320; }
-
-/* Make the Hero Card taller on mobile so the header has room to breathe */
-.flex-row:first-of-type .card-wide {
-  aspect-ratio: 1 / 1;
-  align-items: flex-end;
-  padding-bottom: 2rem;
-}
 
 /* Column Wrappers for Filler Cards */
 .card-column {
@@ -202,13 +196,6 @@ body {
     flex-grow: 1; 
     flex-shrink: 1; 
     flex-basis: 480px; 
-  }
-
-  /* Reset Hero Card to its cinematic wide ratio on desktop */
-  .flex-row:first-of-type .card-wide {
-    aspect-ratio: 480 / 320;
-    align-items: center;
-    padding-bottom: 0;
   }
 
   /* Ensure the top proverb fits on one single line */
@@ -377,20 +364,18 @@ body {
 }
 
 /* =========================================================
-   PART 4: HERO HEADER
+   PART 4: SITE HEADER
    ========================================================= */
-.hero-header {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  right: 2rem;
-  z-index: 10;
+.site-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 1.5rem;
 }
 
-.hero-header h1 {
+.site-header h1 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 500;
@@ -398,12 +383,12 @@ body {
   color: #f1f1f1;
 }
 
-.hero-header h1 a {
+.site-header h1 a {
   color: inherit;
   text-decoration: none;
 }
 
-.hero-nav ul {
+.site-header nav ul {
   list-style: none;
   display: flex;
   gap: 1rem;
@@ -411,7 +396,7 @@ body {
   padding: 0;
 }
 
-.hero-nav a {
+.site-header nav a {
   color: #eaeaea;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -421,8 +406,8 @@ body {
   transition: color 0.3s ease;
 }
 
-.hero-nav a:hover,
-.hero-nav a:focus {
+.site-header nav a:hover,
+.site-header nav a:focus {
   color: #fff;
 }
 
@@ -432,7 +417,12 @@ body {
 }
 
 @media (min-width: 50em) {
-  .hero-nav ul {
+  .site-header {
+    max-width: 120rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .site-header nav ul {
     gap: 2rem;
   }
 
@@ -467,12 +457,12 @@ body {
 }
 
 /* Proverb Formatting */
-.proverb {
+blockquote {
   margin: 0;
   padding: 0;
 }
 
-.proverb blockquote p {
+blockquote p {
   margin: 0;
   font-weight: 500;
   font-size: 1rem;
@@ -481,12 +471,14 @@ body {
   text-wrap: balance;
 }
 
-.proverb figcaption {
+blockquote cite {
+  display: block;
   text-align: right;
   font-size: 1rem;
   color: #c8c8c8;
   letter-spacing: 1px;
   margin-top: 6px;
+  font-style: normal;
 }
 
 .footer-text p {
@@ -504,10 +496,16 @@ body {
   text-wrap: balance;
 }
 
-.footer-text .copyright {
+.site-footer {
+  margin-top: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.site-footer .copyright {
   font-size: 0.85rem;
-  margin-top: 1.5rem;
   color: #aaa;
+  margin: 0;
 }
 
 .social-icons {

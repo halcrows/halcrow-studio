@@ -12,6 +12,15 @@
 </head>
 <body>
 
+  <header class="site-header">
+    <h1><a href="/">Halcrow</a></h1>
+    <nav>
+      <ul>
+        <li><a href="/">Studio</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <!-- Wraps the entire page content -->
   <main class="flex-gallery">
 
@@ -35,16 +44,6 @@
       <article class="card-container card-wide">
         <div class="the-box grid-pattern"></div>
         
-        <!-- Header & Nav Overlay -->
-        <header class="hero-header">
-          <h1><a href="/">Halcrow</a></h1>
-          <nav class="hero-nav">
-            <ul>
-              <li><a href="/">Studio</a></li>
-            </ul>
-          </nav>
-        </header>
-
         <div class="card-text">
           <h2>bauxd air</h2>
           <p>The box and the air inside it.</p>
@@ -82,12 +81,10 @@
       <div class="card-column col-square">
         <div class="filler-card grid-pattern">
           <div class="footer-text">
-            <figure class="proverb">
-              <blockquote>
-                <p>"A clever crow will always paint its feather black."</p>
-              </blockquote>
-              <figcaption>Proverb</figcaption>
-            </figure>
+            <blockquote>
+              <p>"A clever crow will always paint its feather black."</p>
+              <cite>An Old Fable</cite>
+            </blockquote>
           </div>
         </div>
         <article class="card-container card-square" tabindex="0">
@@ -140,7 +137,7 @@
       </article>
         <div class="filler-card grid-pattern">
           <div class="footer-text">
-            <p class="brand-statement">&mdash; Halcrow is a product design studio founded in 2026 by Craig Henderson Halcrow, a real person.</p>
+            <p class="brand-statement">&mdash; Halcrow is a product design studio founded in 2026 by Craig Henderson Halcrow.</p>
           </div>
         </div>
       </div>
@@ -234,18 +231,15 @@
       </article>
         <div class="filler-card grid-pattern">
           <footer class="footer-text">
-            <figure class="proverb">
-              <blockquote>
-                <p>"Birds of a feather flock together."</p>
-              </blockquote>
-            </figure>
+            <blockquote>
+              <p>"Birds of a feather flock together."</p>
+            </blockquote>
             <p>Get quarterly product updates from our studio.</p>
             <form class="subscribe-form" action="https://formspree.io/f/mgodakpn" method="POST">
               <label for="email-sub" class="sr-only">Email address</label>
               <input type="email" id="email-sub" name="email" placeholder="Email address" required>
               <button type="submit">Subscribe</button>
             </form>
-            <p class="copyright"><small>&copy; 2026 Halcrow Studio. All rights reserved.</small></p>
           </footer>
         </div>
       </div>
@@ -253,6 +247,10 @@
     </section>
 
   </main>
+
+  <footer class="site-footer">
+    <p class="copyright"><small>&copy; 2026 Halcrow Studio. All rights reserved.</small></p>
+  </footer>
 
 </body>
 </html>
