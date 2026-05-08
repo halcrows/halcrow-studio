@@ -132,8 +132,7 @@ body {
 }
 
 /* Mobile Reordering for Footer Cards */
-/* Note: 49.9375em equals 799px (1px less than 50em). Prevents overlap bugs while using accessible em units. */
-@media (max-width: 49.9375em) {
+@media (max-width: 50em) {
   .filler-card:empty {
     display: none; /* Hides decorative empty cards on mobile screens */
   }
